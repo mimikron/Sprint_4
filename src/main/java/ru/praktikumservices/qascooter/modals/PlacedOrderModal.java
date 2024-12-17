@@ -1,4 +1,4 @@
-package ru.praktikum_services.qa_scooter.modals;
+package ru.praktikumservices.qascooter.modals;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

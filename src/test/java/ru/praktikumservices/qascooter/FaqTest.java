@@ -1,6 +1,5 @@
-package ru.praktikum_services.qa_scooter;
+package ru.praktikumservices.qascooter;
 
-import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,21 +7,24 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import ru.praktikum_services.qa_scooter.pages.SamokatHomePage;
+import ru.praktikumservices.qascooter.constants.Urls;
+import ru.praktikumservices.qascooter.pages.SamokatHomePage;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class FaqTest extends TestCase {
+public class FaqTest {
 
     private WebDriver driver;
 
     //Вопрос
     private final String question;
     //Ответ
-    private final String unswer;
+    private final String answer;
 
-    public FaqTest(String question, String unswer) {
+    public FaqTest(String question, String answer) {
         this.question = question;
-        this.unswer = unswer;
+        this.answer = answer;
     }
 
     @Parameterized.Parameters
@@ -54,7 +56,7 @@ public class FaqTest extends TestCase {
         ChromeOptions options = new ChromeOptions();
 
         driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(Urls.MAIN_PAGE);
 
         SamokatHomePage homePageSamokat = new SamokatHomePage(driver);
 
@@ -62,8 +64,8 @@ public class FaqTest extends TestCase {
         homePageSamokat.waitForFaqIsVisible();
 
         //Открытие выпадающего списка и проверка ответа
-        assertEquals("Ответ: " + unswer + "- не соответсвует вопросу: " + question, unswer, homePageSamokat.clickQuestionAndGetAnswer(question));
-        driver.quit();
+        assertEquals("Ответ: " + answer + "- не соответсвует вопросу: " + question,
+                answer, homePageSamokat.clickQuestionAndGetAnswer(question));
     }
 
     @After

@@ -1,4 +1,4 @@
-package ru.praktikum_services.qa_scooter.pages;
+package ru.praktikumservices.qascooter.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -118,8 +118,9 @@ public class OrderPage {
     }
 
     public void clickOrderButton(){
-     driver.findElement(order).isEnabled();
-     driver.findElement(order).click();
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.elementToBeClickable(order));
+        driver.findElement(order).click();
     }
 
 }

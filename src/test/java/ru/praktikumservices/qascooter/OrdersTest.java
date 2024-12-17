@@ -1,20 +1,20 @@
-package ru.praktikum_services.qa_scooter;
+package ru.praktikumservices.qascooter;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import ru.praktikum_services.qa_scooter.modals.AcceptModal;
-import ru.praktikum_services.qa_scooter.modals.PlacedOrderModal;
-import ru.praktikum_services.qa_scooter.pages.SamokatHomePage;
-import ru.praktikum_services.qa_scooter.pages.OrderPage;
+import ru.praktikumservices.qascooter.constants.Urls;
+import ru.praktikumservices.qascooter.modals.AcceptModal;
+import ru.praktikumservices.qascooter.modals.PlacedOrderModal;
+import ru.praktikumservices.qascooter.pages.SamokatHomePage;
+import ru.praktikumservices.qascooter.pages.OrderPage;
 import org.junit.After;
 
 @RunWith(Parameterized.class)
-public class OrdersTest extends TestCase {
+public class OrdersTest {
 
     private WebDriver driver;
 
@@ -66,7 +66,7 @@ public class OrdersTest extends TestCase {
         ChromeOptions options = new ChromeOptions();
 
         driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(Urls.MAIN_PAGE);
 
         SamokatHomePage homePageSamokat = new SamokatHomePage(driver);
 
